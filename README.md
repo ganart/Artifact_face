@@ -52,11 +52,17 @@ The solution consists of the following components:
 
 ## Installation
 
+## Installation
+
 The main code is executed via a Jupyter Notebook (`hovorukha_task_1.ipynb`), which handles dataset preparation, model training, and evaluation. By default, training functions (`fit`) are commented out, and pre-trained model weights are downloaded from Google Drive, enabling quick accuracy evaluation without training. The notebook is configured for Kaggle, with paths tied to the Kaggle environment.
 
 Follow these steps to set up and run the project:
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/ganart/Artifact_face.git
-   cd Artifact_face/src
+1. Open `hovorukha_task_1.ipynb` in the Kaggle Notebook environment.
+
+2. Run all cells sequentially, **except** for those marked with:
+   ```python
+   # EDA: Visualize dataset
+These cells are optional and used only for dataset visualization (e.g., displaying sample images). Skipping them will not affect model performance or evaluation.
+
+3. If you want to train models from scratch, uncomment the fit function calls. Otherwise, the notebook will load pre-trained weights and perform immediate evaluation.

@@ -65,4 +65,4 @@ Follow these steps to set up and run the project:
    # EDA: Visualize dataset
 These cells are optional and used only for dataset visualization (e.g., displaying sample images). Skipping them will not affect model performance or evaluation.
 
-3. If you want to train models from scratch, uncomment the fit function calls. Otherwise, the notebook will load pre-trained weights and perform immediate evaluation.
+3. If you want to train models from scratch, uncomment the **fit** function calls. Otherwise, the notebook will load pre-trained weights and perform immediate evaluation.

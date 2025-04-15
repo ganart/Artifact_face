@@ -21,4 +21,16 @@ def compute_ensemble(trainers, test_loader):
     true_labels = []
     for _, labels, _ in test_loader:
         true_labels.extend(labels.numpy())
+
+    misclassified = []
+    for i, (true_label, pred, (_, _, path)) in enumerate(zip(true_labels, ensemble_preds, test_loader.dataset)):
+        if true_label != pred:
+            misclassified.append({
+                'path': path,
+                'true_label': true_label,
+                'pred_label': pred
+            })
+    for item in misclassified:
+        print(f"Path: {item['path']}, True label: {item['true_label']} (0=Artifact , 1=noArtifact), Predicted: {item['pred_label']}")
+    
     return f1_score(true_labels, ensemble_preds, average='micro')

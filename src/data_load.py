@@ -72,3 +72,15 @@ def get_transforms(train=True):
         v2.ToDtype(torch.float32, scale=True),
     ])
 
+def get_dataloaders(train_dir, val_dir=None, test_dir=None, batch_size=32):
+    train_dataset = ArtifactDataset(train_dir, transform=get_transforms(train=True))
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4, pin_memory=True)
+    val_loader = None
+    if val_dir:
+        val_dataset = ArtifactDataset(val_dir, transform=get_transforms(train=False))
+        val_loader = DataLoader(val_dataset, batch_size=batch_size, num_workers=4, pin_memory=True)
+    test_loader = None
+    if test_dir:
+        test_dataset = ArtifactDataset(test_dir, transform=get_transforms(train=False))
+        test_loader = DataLoader(test_dataset, batch_size=batch_size, num_workers=4, pin_memory=True)
+    return train_loader, val_loader, test_loader
